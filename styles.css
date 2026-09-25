@@ -70,7 +70,7 @@ h1 em, h2 em { color: var(--copper); font-weight: 500; }
 .hero h1 em { color: var(--cream); }
 .hero .kicker { color: var(--cream); }
 .hero .kicker span { background: var(--cream); }
-.hero__tradition { color: var(--forest); }
+.hero__tradition { color: var(--ink); }
 .hero__remember { color: var(--forest); }
 .hero__intro { max-width: 400px; margin: 34px 0 29px; color: rgba(244,240,232,.76); font-size: 13px; line-height: 1.8; }
 .hero__actions { display: flex; align-items: center; gap: 25px; }

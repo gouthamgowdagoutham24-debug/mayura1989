@@ -11,6 +11,7 @@ if (navMenu) {
 const galleryImages = document.querySelectorAll('.gallery-image');
 const heroGallery = document.querySelector('.menu-cover__gallery');
 let galleryIndex = 0;
+let galleryTimer;
 
 function showGalleryImage(nextIndex) {
   galleryImages[galleryIndex].classList.remove('gallery-image--active');
@@ -18,10 +19,23 @@ function showGalleryImage(nextIndex) {
   galleryImages[galleryIndex].classList.add('gallery-image--active');
 }
 
-if (galleryImages.length > 1) {
-  window.setInterval(() => {
+function startGallerySlideshow() {
+  if (galleryTimer || galleryImages.length < 2) return;
+  galleryTimer = window.setInterval(() => {
     showGalleryImage(galleryIndex + 1);
   }, 4200);
+}
+
+if (heroGallery && 'IntersectionObserver' in window) {
+  const galleryObserver = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) {
+      startGallerySlideshow();
+      galleryObserver.disconnect();
+    }
+  }, { threshold: .35 });
+  galleryObserver.observe(heroGallery);
+} else {
+  startGallerySlideshow();
 }
 
 let heroTouchStartX = 0;
@@ -199,4 +213,35 @@ menuBook.addEventListener('touchend', (event) => {
   if (deltaX < 0) menuNext.click();
   if (deltaX > 0 && menuIndex > 0) menuPrevious.click();
 }, { passive: true });
+
+const reviewCards = document.querySelectorAll('.review-card');
+const reviewPrevious = document.querySelector('.review-prev');
+const reviewNext = document.querySelector('.review-next');
+const reviewCounter = document.querySelector('.review-counter');
+let reviewIndex = 0;
+let reviewTimer;
+
+function showReview(nextIndex) {
+  reviewCards[reviewIndex].classList.remove('review-card--active');
+  reviewIndex = (nextIndex + reviewCards.length) % reviewCards.length;
+  reviewCards[reviewIndex].classList.add('review-card--active');
+  reviewCounter.textContent = `${String(reviewIndex + 1).padStart(2, '0')} / ${String(reviewCards.length).padStart(2, '0')}`;
+}
+
+function startReviewSlideshow() {
+  if (reviewTimer || reviewCards.length < 2) return;
+  reviewTimer = window.setInterval(() => showReview(reviewIndex + 1), 5200);
+}
+
+if (reviewCards.length && reviewPrevious && reviewNext && reviewCounter) {
+  reviewPrevious.addEventListener('click', () => {
+    showReview(reviewIndex - 1);
+    startReviewSlideshow();
+  });
+  reviewNext.addEventListener('click', () => {
+    showReview(reviewIndex + 1);
+    startReviewSlideshow();
+  });
+  startReviewSlideshow();
+}
 

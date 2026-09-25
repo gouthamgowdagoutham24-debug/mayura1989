@@ -35,7 +35,6 @@
           <h1>Taste the moment.<br /><em>Embrace the tradition.<br /><span class="hero__remember">Remember Mayura.</span></em></h1>
           <p class="hero__intro">Bold, generous Andhra cooking served with the polish of a modern dining room. Familiar flavours, carefully kept.</p>
           <div class="hero__actions">
-            <a class="button" href="#contact">Book a table <span aria-hidden="true">&#8599;</span></a>
             <a class="text-link" href="#menu">Explore the menu <span aria-hidden="true">&#8594;</span></a>
           </div>
           <div class="hero__details">
@@ -149,8 +148,8 @@
               <div><span>2</span><i><b style="width: 2%"></b></i><small>2%</small></div>
             </div>
           </div>
-          <div class="review-cards">
-            <article class="review-card">
+          <div class="review-cards" aria-live="polite">
+            <article class="review-card review-card--active">
               <div class="review-card__top"><div class="review-stars" aria-label="5 out of 5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div><span>Recent visit</span></div>
               <blockquote>“The Andhra flavours are bold without losing their balance. A warm, generous evening from the first dish to the last.”</blockquote>
               <p><b>Ananya R.</b> · Bengaluru</p>
@@ -165,6 +164,11 @@
               <blockquote>“Mayura makes tradition feel fresh. The room, the aromas and the food all stay with you well after dinner.”</blockquote>
               <p><b>Meera S.</b> · Bengaluru</p>
             </article>
+            <div class="review-controls">
+              <button class="review-control review-prev" type="button" aria-label="Previous review"><span aria-hidden="true">&#8593;</span></button>
+              <span class="review-counter">01 / 03</span>
+              <button class="review-control review-next" type="button" aria-label="Next review"><span aria-hidden="true">&#8595;</span></button>
+            </div>
           </div>
         </div>
       </section>
@@ -189,7 +193,6 @@
           <div class="contact-detail"><span>Reservations</span><a href="tel:+918012345678">+91 80 1234 5678</a></div>
           <div class="contact-detail"><span>Email</span><a href="mailto:hello@mayura1989.in">hello@mayura1989.in</a></div>
           <div class="contact-detail"><span>Hours</span><p>Monday - Sunday<br />12:00 PM - 11:30 PM</p></div>
-          <a class="contact-button" href="mailto:hello@mayura1989.in?subject=Table%20reservation%20at%20Mayura%201989">Make a reservation <span aria-hidden="true">&#8599;</span></a>
         </div>
       </section>
       <footer><span>Mayura 1989 · Andhra Specialty Restaurant</span><small>Powered by Prime Reach</small></footer>
